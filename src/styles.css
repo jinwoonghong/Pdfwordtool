@@ -1,0 +1,66 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  background: #f6f7fb;
+  color: #1f2937;
+}
+
+.viewer-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.viewer-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.file-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-picker input[type='file'] {
+  cursor: pointer;
+}
+
+.pdf-stage {
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 420px;
+  overflow: auto;
+}
+
+.page-container {
+  position: relative;
+  display: inline-block;
+}
+
+.page-canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.page-text-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.95;
+  line-height: 1;
+  transform-origin: 0 0;
+}
+
+.error {
+  color: #b91c1c;
+}
