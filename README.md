@@ -1,19 +1,26 @@
 # Pdfwordtool Frontend Prototype
 
-`pdf.js` 기반 최소 실행 가능한 프론트엔드 뷰어 구조입니다.
+`pdf.js` 기반 영어 PDF 학습용 프론트엔드 뷰어입니다.
+
+## 구현된 기능
+
+- PDF 업로드 후 1페이지 렌더링(Canvas + Text Layer)
+- 영어 단어/문장 드래그 시 번역 툴팁 표시
+  - 현재 번역은 API 연동 전 로컬 스텁(`[KR] ...`)을 사용
+- PDF 전체 텍스트를 페이지별로 추출해 단어 인덱스 패널 제공
+  - 빈도 수 정렬, 검색, 단어 클릭 번역
 
 ## 아키텍처
 
 - `src/viewer/PdfViewer.tsx`
-  - 로컬 PDF 업로드
-  - 1페이지 렌더링(Canvas)
-  - 텍스트 레이어 활성화(`renderTextLayer`)
+  - PDF 렌더링, 텍스트 선택 이벤트, 번역 툴팁 UI
+  - 단어 인덱스 사이드 패널 UI
 - `src/services/pdfTextExtractionService.ts`
-  - PDF의 페이지별 텍스트 추출 담당
+  - PDF 페이지별 텍스트 추출
+  - 단어 토큰화 + 빈도/페이지 기반 인덱스 생성
 - `src/services/translationService.ts`
-  - 번역 API 연동을 위한 독립 서비스 레이어(현재는 스텁)
-
-즉, **뷰어(UI)**, **PDF 텍스트 추출**, **번역 API**가 분리된 구조로 되어 있어 향후 기능 확장 시 결합도를 낮출 수 있습니다.
+  - 번역 요청 인터페이스
+  - AbortSignal + 캐시를 포함한 로컬 스텁 번역기
 
 ## 실행 방법
 
@@ -22,10 +29,4 @@ npm install
 npm run dev
 ```
 
-브라우저에서 Vite 기본 주소(예: `http://localhost:5173`)를 열고 PDF 파일을 선택하면 첫 페이지가 렌더링됩니다.
-
-## 향후 확장 아이디어
-
-1. 페이지 이동(이전/다음), 줌 컨트롤 추가
-2. 추출 텍스트를 문단 단위로 분할해 번역 파이프라인 연결
-3. 번역 결과를 오버레이하거나 병렬 뷰(원문/번역)로 표시
+브라우저에서 Vite 기본 주소(예: `http://localhost:5173`)를 열고 PDF 파일을 선택하세요.

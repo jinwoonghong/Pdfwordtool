@@ -10,7 +10,7 @@ body {
 }
 
 .viewer-shell {
-  max-width: 960px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 24px;
 }
@@ -30,6 +30,13 @@ body {
 
 .file-picker input[type='file'] {
   cursor: pointer;
+}
+
+.viewer-layout {
+  display: grid;
+  grid-template-columns: minmax(520px, 1fr) 340px;
+  gap: 16px;
+  align-items: start;
 }
 
 .pdf-stage {
@@ -61,6 +68,77 @@ body {
   transform-origin: 0 0;
 }
 
+.word-panel {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.word-search {
+  width: 100%;
+  margin: 6px 0;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.word-count {
+  margin: 4px 0 8px;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.word-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.word-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.word-item:hover {
+  background: #f9fafb;
+}
+
+.translate-tooltip {
+  position: absolute;
+  z-index: 20;
+  max-width: 320px;
+  background: #111827;
+  color: #f9fafb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.32);
+}
+
+.translate-tooltip p {
+  margin: 6px 0;
+}
+
+.translate-tooltip small {
+  color: #d1d5db;
+}
+
 .error {
   color: #b91c1c;
+}
+
+@media (max-width: 1080px) {
+  .viewer-layout {
+    grid-template-columns: 1fr;
+  }
 }
